@@ -16,7 +16,7 @@ export function useTaskManager() {
     {
       id: 2,
       name: "Finish project report",
-      category: categories[1],
+      category: categories[0],
       isComplete: true,
       subTasks: [],
       date: new Date(),
@@ -24,7 +24,7 @@ export function useTaskManager() {
     {
       id: 3,
       name: "Meditate for 15 minutes",
-      category: categories[2],
+      category: categories[0],
       isComplete: false,
       subTasks: [],
       date: new Date(),
@@ -32,7 +32,7 @@ export function useTaskManager() {
     {
       id: 4,
       name: "Organize documents",
-      category: categories[3],
+      category: categories[0],
       isComplete: false,
       subTasks: [],
       date: new Date(),
