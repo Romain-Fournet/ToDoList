@@ -1,7 +1,4 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { Task, Category } from "../../types";
-import { useTaskManager } from "../../hooks/useTasksManager";
-import { NewSubTaskInput } from "@components/NewSubTaskInput";
 
 //Création du contexte
 type NewSubTaskContextType = {

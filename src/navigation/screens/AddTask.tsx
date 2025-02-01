@@ -7,14 +7,13 @@ import { useNavigation } from "@react-navigation/native";
 import { TaskName } from "@components/TaskName";
 import { SubTaskSection } from "@components/SubTasksSection";
 import { TaskActionsSection } from "@components/TaskActionsSection";
-import NewSubTaskContextProvider, {
-  useNewSubTaskContext,
-} from "@components/context/NewSubTaskContext";
+import { useNewSubTaskContext } from "@components/context/NewSubTaskContext";
 
 export function AddTask() {
   const navigation = useNavigation();
 
   const { addTask } = useTaskContext();
+  const { newSubTaskName, setNewSubTaskName } = useNewSubTaskContext();
 
   const {
     task,
@@ -26,11 +25,9 @@ export function AddTask() {
     setSubTaskName,
   } = useTask();
 
-  const { newSubTaskName, setNewSubTaskName } = useNewSubTaskContext();
-
   const onSavePress = async () => {
     if (newSubTaskName) {
-      //On passe en props addTask car on veut ajouter la sous tache puis la tache
+      //Passing addTask as a prop to add the task directly affter adding the subtask
       addSubTask(newSubTaskName, addTask);
       setNewSubTaskName("");
     } else {
@@ -49,6 +46,7 @@ export function AddTask() {
           icon="close"
         />
       </View>
+      {/* Task info display */}
       <View style={styles.top}>
         <TaskName task={task} setName={setTaskName} />
         {task.name && (
@@ -60,7 +58,6 @@ export function AddTask() {
           />
         )}
       </View>
-
       <TaskActionsSection
         onSavePress={onSavePress}
         setTaskCategory={setTaskCategory}

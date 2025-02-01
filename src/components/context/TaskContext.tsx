@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext } from "react";
-import { Task, Category } from "../../types";
+import { Task } from "../../types";
 import { useTaskManager } from "../../hooks/useTasksManager";
 
 //Création du contexte

@@ -4,7 +4,6 @@ import { CheckBox } from "@components/CheckBox";
 import { ThemedText } from "@components/ThemedText";
 import { Task } from "@types";
 import { CategoryLabel } from "./CategoryLabel";
-import { useTheme } from "@react-navigation/native";
 
 type Props = {
   children?: React.ReactNode;

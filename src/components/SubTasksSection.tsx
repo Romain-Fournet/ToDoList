@@ -1,6 +1,5 @@
-import { FlatList, StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { SubTaskCard } from "@components/SubTaskCard";
 import { Task } from "@types";
 import { NewSubTaskInput } from "./NewSubTaskInput";
 import { SubTaskEditorList } from "./SubTaskEditorList";

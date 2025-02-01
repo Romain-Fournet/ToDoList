@@ -12,10 +12,9 @@ import { Category, Task } from "@types";
 import { useTheme } from "@react-navigation/native";
 import { useCategoryContext } from "@context/CategoryContext";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { useState } from "react";
 import { useDatePicker } from "@hooks/useDatePicker";
 
-type TaskActionsSectionProps = {
+type Props = {
   task: Task;
   setTaskCategory: (category: Category) => void;
   setTaskDate: (date: Date) => void;
@@ -27,7 +26,7 @@ export function TaskActionsSection({
   setTaskCategory,
   setTaskDate,
   onSavePress,
-}: TaskActionsSectionProps) {
+}: Props) {
   const { colors } = useTheme();
   const { categories } = useCategoryContext();
 
@@ -48,7 +47,7 @@ export function TaskActionsSection({
         <View
           style={[styles.container, { backgroundColor: colors.background }]}
         >
-          {/*Liste des categories*/}
+          {/* Category list*/}
           <FlatList
             ItemSeparatorComponent={() => <View style={{ width: 14 }} />}
             data={categories}
@@ -63,7 +62,7 @@ export function TaskActionsSection({
             horizontal={true}
           />
           <Row gap={8}>
-            {/*Bouton pour choisir une date*/}
+            {/* Date chooser button */}
             <Button
               icon={"clockPlus"}
               style={styles.clockButton}
@@ -71,7 +70,7 @@ export function TaskActionsSection({
                 showDatePicker();
               }}
             />
-            {/*Bouton sauvegarder la tache*/}
+            {/* Save task button*/}
             <Button
               style={styles.plusButton}
               onPress={() => {

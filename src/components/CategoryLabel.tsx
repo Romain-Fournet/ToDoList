@@ -1,5 +1,5 @@
 import { Category } from "../types";
-import { StyleSheet, TextProps, View, ViewProps } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { ThemedText } from "@components/ThemedText";
 
 type Props = { category: Category; selected?: boolean };

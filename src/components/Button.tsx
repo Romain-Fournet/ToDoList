@@ -1,5 +1,4 @@
 import { ButtonIcons } from "@const/ButtonIcons";
-import { ThemeContext } from "@react-navigation/native";
 import { Pressable, Image, StyleSheet, ViewProps } from "react-native";
 import { ThemedText } from "@components/ThemedText";
 

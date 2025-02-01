@@ -1,14 +1,13 @@
 import { Row } from "@components/Row";
 import { CheckBox } from "@components/CheckBox";
 import { TextInput, StyleSheet } from "react-native";
-import { useState } from "react";
 import { useNewSubTaskContext } from "@context/NewSubTaskContext";
 
-type NewSubTaskInputProps = {
+type Props = {
   addSubTask: (name: string) => void;
 };
 
-export function NewSubTaskInput({ addSubTask }: NewSubTaskInputProps) {
+export function NewSubTaskInput({ addSubTask }: Props) {
   const { newSubTaskName, setNewSubTaskName } = useNewSubTaskContext();
   const handleBlur = () => {
     if (newSubTaskName) {

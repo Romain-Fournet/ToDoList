@@ -2,7 +2,7 @@ import { FlatList, View } from "react-native";
 import { SubTaskCard } from "@components/SubTaskCard";
 import { Task } from "@types";
 
-type SubTaskEditorListProps = {
+type Props = {
   subTasks: Task[];
   deleteSubTask: (id: number) => void;
   setSubTaskName: (id: number, name: string) => void;
@@ -12,7 +12,7 @@ export function SubTaskEditorList({
   subTasks,
   deleteSubTask,
   setSubTaskName,
-}: SubTaskEditorListProps) {
+}: Props) {
   return (
     <FlatList
       data={subTasks}
