@@ -20,11 +20,11 @@ import { getAssociatedTasks } from "../../functions/category";
 import { SwipeListView, SwipeRow } from "react-native-swipe-list-view";
 import { serializeTask } from "../../functions/task";
 import { HeaderDate } from "@components/HeaderDate";
+import { CategoriesSection } from "@components/CategoriesSection";
 
 export function Home() {
   const { colors } = useTheme();
   const navigation = useNavigation();
-  const { categories } = useCategoryContext();
   const { tasks, toggleTaskCompletion, deleteTask } = useTaskContext();
 
   const screenHeight = Dimensions.get("window").height;
@@ -38,24 +38,7 @@ export function Home() {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.body}>
         <HeaderDate beforeText="Today" />
-        <View style={styles.categoriesWraper}>
-          <FlatList
-            data={categories}
-            numColumns={2}
-            columnWrapperStyle={styles.gridGap}
-            contentContainerStyle={styles.gridGap}
-            renderItem={({ item }) => (
-              <CategoryCard
-                key={item.id}
-                category={item}
-                numberTasksAssociated={getAssociatedTasks(item.id, tasks)}
-              />
-            )}
-            initialNumToRender={2}
-            maxToRenderPerBatch={2}
-            keyExtractor={(item) => item.id.toString()}
-          />
-        </View>
+        <CategoriesSection />
         <View style={{ maxHeight: bodyHeight - 390 }}>
           <SwipeListView
             data={tasks}
@@ -128,12 +111,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 22,
     rowGap: 32,
     overflow: "hidden",
-  },
-  gridGap: {
-    gap: 8,
-  },
-  categoriesWraper: {
-    maxHeight: 194,
   },
   addButton: {
     position: "absolute",
