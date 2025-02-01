@@ -3,8 +3,9 @@ import { Asset } from "expo-asset";
 import * as SplashScreen from "expo-splash-screen";
 import * as React from "react";
 import { Navigation } from "./navigation";
-import CategoryContextProvider from "./components/context/CategoryContext";
-import TaskContextProvider from "./components/context/TaskContext";
+import CategoryContextProvider from "@components/context/CategoryContext";
+import TaskContextProvider from "@components/context/TaskContext";
+import NewSubTaskContextProvider from "@components/context/NewSubTaskContext";
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -18,11 +19,13 @@ export function App() {
   return (
     <CategoryContextProvider>
       <TaskContextProvider>
-        <Navigation
-          onReady={() => {
-            SplashScreen.hideAsync();
-          }}
-        />
+        <NewSubTaskContextProvider>
+          <Navigation
+            onReady={() => {
+              SplashScreen.hideAsync();
+            }}
+          />
+        </NewSubTaskContextProvider>
       </TaskContextProvider>
     </CategoryContextProvider>
   );

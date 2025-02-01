@@ -31,7 +31,7 @@ export function useTask(initialTask?: Task) {
 
   //Logique sous taches
 
-  const addSubTask = (name: string) => {
+  const addSubTask = (name: string, addTask?: (task: Task) => void) => {
     const newSubTask: Task = {
       id: Date.now(),
       name: name,
@@ -42,10 +42,16 @@ export function useTask(initialTask?: Task) {
       date: task.date,
     };
 
-    setTask((prevTask) => ({
-      ...prevTask,
-      subTasks: [newSubTask, ...prevTask.subTasks],
-    }));
+    setTask((prevTask) => {
+      const updatedTask = {
+        ...prevTask,
+        subTasks: [newSubTask, ...prevTask.subTasks],
+      };
+      if (addTask) {
+        addTask(updatedTask);
+      }
+      return updatedTask;
+    });
   };
 
   const deleteSubTask = (id: number) => {
