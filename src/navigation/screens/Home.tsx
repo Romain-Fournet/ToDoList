@@ -1,10 +1,8 @@
 import { Button } from "@components/Button";
 import { CategoryCard } from "@components/CategoryCard";
 import { useCategoryContext } from "@components/context/CategoryContext";
-import { Row } from "../../components/Row";
 import { SubTaskCard } from "@components/SubTaskCard";
 import { TaskCard } from "@components/TaskCard";
-import { ThemedText } from "@components/ThemedText";
 import React, { useEffect, useState } from "react";
 import {
   Dimensions,
@@ -18,10 +16,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useTheme } from "@react-navigation/core";
 import { useTaskContext } from "@components/context/TaskContext";
-import { getTodayDate } from "../../functions/date";
 import { getAssociatedTasks } from "../../functions/category";
 import { SwipeListView, SwipeRow } from "react-native-swipe-list-view";
 import { serializeTask } from "../../functions/task";
+import { HeaderDate } from "@components/HeaderDate";
 
 export function Home() {
   const { colors } = useTheme();
@@ -39,22 +37,7 @@ export function Home() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.body}>
-        <Row style={styles.date} gap={10}>
-          <ThemedText
-            variant="heading"
-            textStyle="normal"
-            style={{ fontWeight: "bold" }}
-          >
-            Today
-          </ThemedText>
-          <ThemedText
-            variant="heading"
-            textStyle="faded"
-            style={{ fontWeight: "medium" }}
-          >
-            {getTodayDate()}
-          </ThemedText>
-        </Row>
+        <HeaderDate beforeText="Today" />
         <View style={styles.categoriesWraper}>
           <FlatList
             data={categories}
@@ -145,9 +128,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 22,
     rowGap: 32,
     overflow: "hidden",
-  },
-  date: {
-    paddingHorizontal: 10,
   },
   gridGap: {
     gap: 8,
