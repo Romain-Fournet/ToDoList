@@ -43,7 +43,7 @@ export function AddTask() {
           <TaskName task={task} setName={setTaskName} />
           {task.name && (
             <SubTaskSection
-              mainTask={task}
+              subTasks={task.subTasks}
               addSubTask={addSubTask}
               deleteSubTask={deleteSubTask}
               setSubTaskName={setSubTaskName}

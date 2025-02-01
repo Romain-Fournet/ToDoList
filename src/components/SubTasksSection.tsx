@@ -3,16 +3,17 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SubTaskCard } from "@components/SubTaskCard";
 import { Task } from "@types";
 import { NewSubTaskInput } from "./NewSubTaskInput";
+import { SubTaskEditorList } from "./SubTaskEditorList";
 
 type Props = {
-  mainTask: Task;
+  subTasks: Task[];
   addSubTask: (name: string) => void;
   deleteSubTask: (id: number) => void;
   setSubTaskName: (id: number, name: string) => void;
 };
 
 export function SubTaskSection({
-  mainTask,
+  subTasks,
   addSubTask,
   deleteSubTask,
   setSubTaskName,
@@ -21,17 +22,10 @@ export function SubTaskSection({
     <>
       <GestureHandlerRootView style={styles.container}>
         <NewSubTaskInput addSubTask={addSubTask} />
-        <FlatList
-          data={mainTask.subTasks}
-          renderItem={({ item }) => (
-            <SubTaskCard
-              subTask={item}
-              deleteSubTask={deleteSubTask}
-              setSubTaskName={setSubTaskName}
-            />
-          )}
-          ItemSeparatorComponent={() => <View style={{ height: 32 }} />}
-          keyExtractor={(item) => item.id.toString()}
+        <SubTaskEditorList
+          subTasks={subTasks}
+          deleteSubTask={deleteSubTask}
+          setSubTaskName={setSubTaskName}
         />
       </GestureHandlerRootView>
     </>
