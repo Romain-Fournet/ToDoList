@@ -1,6 +1,6 @@
 import { Category, Task } from "../types";
 import { useContext, useState } from "react";
-import { CategoryContext } from "../components/context/CategoryContext";
+import { CategoryContext } from "@components/context/CategoryContext";
 
 export function useTaskManager() {
   const { categories } = useContext(CategoryContext);
@@ -78,22 +78,30 @@ export function useTaskManager() {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
-  const toggleTaskCompletion = (id: number, subId?: number) => {
+  const toggleTaskCompletion = (id: number) => {
     //TODO Ajouter un systeme pour le lien entre la tache principale et secondaires
     setTasks((prevTasks) =>
       prevTasks.map((task) => {
         if (task.id === id) {
-          if (subId) {
-            return {
-              ...task,
-              subTasks: task.subTasks?.map((subTask) =>
-                subTask.id === subId
-                  ? { ...subTask, isComplete: !subTask.isComplete }
-                  : subTask
-              ),
-            };
-          }
           return { ...task, isComplete: !task.isComplete };
+        }
+        return task;
+      })
+    );
+  };
+
+  const toggleSubTaskCompletion = (mainTaskId: number, subTaskId: number) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => {
+        if (task.id === mainTaskId) {
+          return {
+            ...task,
+            subTasks: task.subTasks?.map((subTask) =>
+              subTask.id === subTaskId
+                ? { ...subTask, isComplete: !subTask.isComplete }
+                : subTask
+            ),
+          };
         }
         return task;
       })
@@ -113,6 +121,7 @@ export function useTaskManager() {
     addTask,
     deleteTask,
     toggleTaskCompletion,
+    toggleSubTaskCompletion,
     replaceTask,
   };
 }

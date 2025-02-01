@@ -10,22 +10,22 @@ import { TextInput } from "react-native-gesture-handler";
 type Props = {
   subTask: Task;
   deleteSubTask?: (id: number) => void;
-  toggleTaskCompletion?: (id: number, subId: number) => void;
+  toggleSubTaskCompletion?: (mainTaskId: number, subTaskId: number) => void;
   setSubTaskName?: (id: number, name: string) => void;
 };
 
 export function SubTaskCard({
   subTask,
-  toggleTaskCompletion,
+  toggleSubTaskCompletion,
   deleteSubTask,
   setSubTaskName,
 }: Props) {
   const { colors } = useTheme();
 
   const displayMode = (): "Modify" | "Using" | "Unknow Mode" => {
-    if (deleteSubTask && setSubTaskName && !toggleTaskCompletion) {
+    if (deleteSubTask && setSubTaskName && !toggleSubTaskCompletion) {
       return "Modify";
-    } else if (!deleteSubTask && toggleTaskCompletion) {
+    } else if (!deleteSubTask && toggleSubTaskCompletion) {
       return "Using";
     }
     return "Unknow Mode";
@@ -43,7 +43,7 @@ export function SubTaskCard({
         <Row gap={16}>
           <Pressable
             onPress={() => {
-              toggleTaskCompletion!(subTask.mainTaskId ?? 0, subTask.id);
+              toggleSubTaskCompletion!(subTask.mainTaskId!, subTask.id);
             }}
           >
             <CheckBox checked={subTask.isComplete} />

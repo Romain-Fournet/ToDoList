@@ -9,6 +9,7 @@ type TaskContextType = {
   replaceTask: (modifiedTask: Task) => void;
   deleteTask: (id: number) => void;
   toggleTaskCompletion: (id: number, subId?: number) => void;
+  toggleSubTaskCompletion: (mainTaskId: number, subTaskId: number) => void;
 };
 
 export const TaskContext = createContext<TaskContextType>({
@@ -17,6 +18,7 @@ export const TaskContext = createContext<TaskContextType>({
   replaceTask: () => {},
   deleteTask: () => {},
   toggleTaskCompletion: () => {},
+  toggleSubTaskCompletion: () => {},
 });
 
 type Props = {
@@ -25,8 +27,14 @@ type Props = {
 
 //Instalation du contexte
 export default function TaskContextProvider({ children }: Props) {
-  const { tasks, addTask, replaceTask, deleteTask, toggleTaskCompletion } =
-    useTaskManager();
+  const {
+    tasks,
+    addTask,
+    replaceTask,
+    deleteTask,
+    toggleTaskCompletion,
+    toggleSubTaskCompletion,
+  } = useTaskManager();
 
   const valueTaskContext = {
     tasks,
@@ -34,6 +42,7 @@ export default function TaskContextProvider({ children }: Props) {
     replaceTask,
     deleteTask,
     toggleTaskCompletion,
+    toggleSubTaskCompletion,
   };
 
   return (
