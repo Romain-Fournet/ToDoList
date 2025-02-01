@@ -1,13 +1,13 @@
 import { Pressable, StyleSheet, View, Text } from "react-native";
 import { Row } from "./Row";
-import { CheckBox } from "./CheckBox";
-import { ThemedText } from "./ThemedText";
+import { CheckBox } from "@components/CheckBox";
+import { ThemedText } from "@components/ThemedText";
 import { Task } from "../types";
 import { CategoryLabel } from "./CategoryLabel";
 import { useEffect } from "react";
 import { useTheme } from "@react-navigation/native";
 import { ButtonIcons } from "../consts/ButtonIcons";
-import { Button } from "./Button";
+import { Button } from "@components/Button";
 import { TextInput } from "react-native-gesture-handler";
 
 type Props = {

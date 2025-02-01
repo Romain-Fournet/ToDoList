@@ -1,8 +1,8 @@
-import { Category } from "../types";
+import { Category } from "@types";
 import { Image, StyleSheet, View, ViewProps } from "react-native";
-import { Row } from "./Row";
-import { ThemedText } from "./ThemedText";
-import { Icons } from "../consts/Icons";
+import { Row } from "@components/Row";
+import { ThemedText } from "@components/ThemedText";
+import { Icons } from "@const/Icons";
 
 type Props = ViewProps & {
   category: Category;

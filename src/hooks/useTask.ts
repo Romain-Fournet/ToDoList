@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { Category, Task } from "../types";
-import { useCategoryContext } from "../components/context/CategoryContext";
+import { useCategoryContext } from "@components/context/CategoryContext";
 
 export function useTask(initialTask?: Task) {
   const { categories } = useCategoryContext();

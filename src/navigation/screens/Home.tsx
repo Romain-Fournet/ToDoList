@@ -1,10 +1,10 @@
-import { Button } from "../../components/Button";
-import { CategoryCard } from "../../components/CategoryCard";
-import { useCategoryContext } from "../../components/context/CategoryContext";
+import { Button } from "@components/Button";
+import { CategoryCard } from "@components/CategoryCard";
+import { useCategoryContext } from "@components/context/CategoryContext";
 import { Row } from "../../components/Row";
-import { SubTaskCard } from "../../components/SubTaskCard";
-import { TaskCard } from "../../components/TaskCard";
-import { ThemedText } from "../../components/ThemedText";
+import { SubTaskCard } from "@components/SubTaskCard";
+import { TaskCard } from "@components/TaskCard";
+import { ThemedText } from "@components/ThemedText";
 import React, { useEffect, useState } from "react";
 import {
   Dimensions,
@@ -17,7 +17,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useTheme } from "@react-navigation/core";
-import { useTaskContext } from "../../components/context/TaskContext";
+import { useTaskContext } from "@components/context/TaskContext";
 import { getTodayDate } from "../../functions/date";
 import { getAssociatedTasks } from "../../functions/category";
 import { SwipeListView, SwipeRow } from "react-native-swipe-list-view";

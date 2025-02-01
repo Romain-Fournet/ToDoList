@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useContext } from "react";
-import { Category } from "../../types";
-import { useCategoryManager } from "../../hooks/useCategoryManager";
-
+import { Category } from "@types";
+import { useCategoryManager } from "@hooks/useCategoryManager";
 
 //Création du contexte
 type CategoryContextType = {
@@ -16,27 +15,26 @@ export const CategoryContext = createContext<CategoryContextType>({
   deleteCategory: () => {},
 });
 
-
 type Props = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 //Installation du contexte
-export default function CategoryContextProvider({children}: Props){
-  const { categories, addCategory, deleteCategory} = useCategoryManager()
+export default function CategoryContextProvider({ children }: Props) {
+  const { categories, addCategory, deleteCategory } = useCategoryManager();
 
   const valueCategoryContext = {
-    categories, 
+    categories,
     addCategory,
-    deleteCategory
-  }
+    deleteCategory,
+  };
 
-  return(
+  return (
     <CategoryContext.Provider value={valueCategoryContext}>
       {children}
     </CategoryContext.Provider>
-  )
+  );
 }
 
 //Consometion du contexte
-export const useCategoryContext = () => useContext(CategoryContext)
+export const useCategoryContext = () => useContext(CategoryContext);

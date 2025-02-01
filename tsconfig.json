@@ -4,24 +4,13 @@
     "baseUrl": "./",
     "strict": true,
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@screens/*": [
-        "src/navigation/screens/*"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@context/*": [
-        "src/components/context/*"
-      ],
-      "@types": [
-        "src/types.ts"
-      ]
+      "@components/*": ["src/components/*"],
+      "@screens/*": ["src/navigation/screens/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@styles/*": ["src/styles/*"],
+      "@context/*": ["src/components/context/*"],
+      "@types": ["src/types.ts"],
+      "@const/*": ["src/consts/*"]
     }
   },
   "extends": "expo/tsconfig.base"

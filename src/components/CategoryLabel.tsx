@@ -1,29 +1,30 @@
 import { Category } from "../types";
 import { StyleSheet, TextProps, View, ViewProps } from "react-native";
-import { ThemedText } from "./ThemedText";
+import { ThemedText } from "@components/ThemedText";
 
-type Props = { category: Category, selected?: boolean };
+type Props = { category: Category; selected?: boolean };
 
-export function CategoryLabel({ category, selected}: Props) {
+export function CategoryLabel({ category, selected }: Props) {
   if (!category) {
-    return null; 
+    return null;
   }
-  
-  const backgroundColor = selected || selected === undefined ? {backgroundColor: category.color} : {backgroundColor: "#666666"}
-  const textColor = selected || selected === undefined ? {color: category.color} : {color: "#8a8a8a"}
-  
+
+  const backgroundColor =
+    selected || selected === undefined
+      ? { backgroundColor: category.color }
+      : { backgroundColor: "#666666" };
+  const textColor =
+    selected || selected === undefined
+      ? { color: category.color }
+      : { color: "#8a8a8a" };
+
   return (
     <View style={styles.body}>
-      <View
-        style={[
-          styles.background,
-          backgroundColor
-        ]}
-      />
+      <View style={[styles.background, backgroundColor]} />
       <ThemedText
         variant="subtitle"
         textStyle="normal"
-        style={[ textColor, styles.text]}
+        style={[textColor, styles.text]}
       >
         {category.name.toUpperCase()}
       </ThemedText>
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingHorizontal: 6,
     paddingVertical: 4,
-    overflow: 'hidden'
+    overflow: "hidden",
   },
   background: {
     position: "absolute",
@@ -47,6 +48,6 @@ const styles = StyleSheet.create({
     opacity: 0.1,
   },
   text: {
-    fontWeight: "semibold"
-  }
+    fontWeight: "semibold",
+  },
 });

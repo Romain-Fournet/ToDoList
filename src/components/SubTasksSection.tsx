@@ -1,10 +1,8 @@
-import { Row } from "@components/Row";
-import { CheckBox } from "@components/CheckBox";
-import { FlatList, StyleSheet, TextInput, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { SubTaskCard } from "./SubTaskCard";
-import { useState } from "react";
+import { SubTaskCard } from "@components/SubTaskCard";
 import { Task } from "@types";
+import { NewSubTaskInput } from "./NewSubTaskInput";
 
 type Props = {
   mainTask: Task;
@@ -19,27 +17,10 @@ export function SubTaskSection({
   deleteSubTask,
   setSubTaskName,
 }: Props) {
-  const [newSubTaskName, setNewSubTaskName] = useState("");
-  const handleBlur = () => {
-    if (newSubTaskName) {
-      addSubTask(newSubTaskName);
-      setNewSubTaskName("");
-    }
-  };
-
   return (
     <>
-      <Row style={styles.subTask} gap={16}>
-        <CheckBox checked={false} />
-        <TextInput
-          value={newSubTaskName}
-          placeholder="Add subtask"
-          onChangeText={(text) => setNewSubTaskName(text)}
-          onBlur={() => handleBlur()}
-          style={{ fontSize: 17 }}
-        />
-      </Row>
-      <GestureHandlerRootView>
+      <GestureHandlerRootView style={styles.container}>
+        <NewSubTaskInput addSubTask={addSubTask} />
         <FlatList
           data={mainTask.subTasks}
           renderItem={({ item }) => (
@@ -58,7 +39,7 @@ export function SubTaskSection({
 }
 
 const styles = StyleSheet.create({
-  subTask: {
-    paddingLeft: 36,
+  container: {
+    rowGap: 32,
   },
 });

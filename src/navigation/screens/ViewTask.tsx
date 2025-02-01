@@ -1,8 +1,8 @@
-import { Button } from "../../components/Button";
-import { CategoryLabel } from "../../components/CategoryLabel";
-import { CheckBox } from "../../components/CheckBox";
+import { Button } from "@components/Button";
+import { CategoryLabel } from "@components/CategoryLabel";
+import { CheckBox } from "@components/CheckBox";
 import { Row } from "../../components/Row";
-import { SubTaskCard } from "../../components/SubTaskCard";
+import { SubTaskCard } from "@components/SubTaskCard";
 import { useState } from "react";
 import {
   Pressable,
@@ -14,8 +14,8 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useTheme } from "@react-navigation/native";
-import { useCategoryContext } from "../../components/context/CategoryContext";
-import { useTaskContext } from "../../components/context/TaskContext";
+import { useCategoryContext } from "@components/context/CategoryContext";
+import { useTaskContext } from "@components/context/TaskContext";
 import { Category, Task } from "../../types";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import type { StaticScreenProps } from "@react-navigation/native";

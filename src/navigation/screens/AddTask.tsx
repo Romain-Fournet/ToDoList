@@ -1,12 +1,12 @@
 import { Button } from "@components/Button";
-import { useTaskContext } from "@components/context/TaskContext";
+import { useTaskContext } from "@context/TaskContext";
 import { useTask } from "@hooks/useTask";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { TaskName } from "@components/TaskName";
 import { SubTaskSection } from "@components/SubTasksSection";
-import { TaskActionsPanel } from "@components/TaskActionsPanel";
+import { TaskActionsSection } from "@components/TaskActionsSection";
 
 export function AddTask() {
   const navigation = useNavigation();
@@ -51,7 +51,7 @@ export function AddTask() {
           )}
         </View>
 
-        <TaskActionsPanel
+        <TaskActionsSection
           onSavePress={onSavePress}
           setTaskCategory={setTaskCategory}
           setTaskDate={setTaskDate}

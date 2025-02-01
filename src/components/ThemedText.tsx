@@ -1,5 +1,5 @@
-import { TextStyle } from "../consts/TextStyle";
-import { useTextStyles } from "../hooks/useTextStyles";
+import { TextStyle } from "@const/TextStyle";
+import { useTextStyles } from "@hooks/useTextStyles";
 import { Text, TextProps } from "react-native";
 
 type Props = TextProps & {

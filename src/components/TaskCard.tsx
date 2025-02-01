@@ -1,8 +1,8 @@
 import { Pressable, StyleSheet, View } from "react-native";
 import { Row } from "./Row";
-import { CheckBox } from "./CheckBox";
-import { ThemedText } from "./ThemedText";
-import { Task } from "../types";
+import { CheckBox } from "@components/CheckBox";
+import { ThemedText } from "@components/ThemedText";
+import { Task } from "@types";
 import { CategoryLabel } from "./CategoryLabel";
 import { useTheme } from "@react-navigation/native";
 
