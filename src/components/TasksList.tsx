@@ -7,6 +7,7 @@ import { Task } from "@types";
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { serializeTask } from "src/functions/task";
 import { SubTaskDisplayList } from "./SubTaskDisplayList";
+import { DeleteTaskRowBack } from "./DeleteTaskRowBack";
 
 type Props = {
   tasks: Task[];
@@ -21,13 +22,13 @@ export function TasksList({
   deleteTask,
 }: Props) {
   const { colors } = useTheme();
+
   return (
     <SwipeListView
       data={tasks}
       disableRightSwipe={true}
       stopRightSwipe={-112}
       rightOpenValue={-112}
-      //TODO Rerendre la hauteur du renderHiddenItem a chaque fois qu'on revient sur la page
       renderItem={({ item }) => (
         <View style={{ backgroundColor: colors.background }}>
           <TaskCard
@@ -44,42 +45,11 @@ export function TasksList({
           </TaskCard>
         </View>
       )}
+      //TODO Rerendre la hauteur du renderHiddenItem a chaque fois qu'on revient sur la page
       renderHiddenItem={({ item }) => (
-        <View style={styles.rowBack}>
-          <View style={{ backgroundColor: colors.background }}></View>
-          <Pressable
-            style={styles.rowBackRight}
-            onPress={() => deleteTask(item.id)}
-          >
-            <View>
-              <Text style={{ color: "white" }}>Delete</Text>
-            </View>
-          </Pressable>
-        </View>
+        <DeleteTaskRowBack deleteTask={deleteTask} taskId={item.id} />
       )}
       keyExtractor={(item) => item.id.toString()}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  rowBack: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    flexDirection: "row",
-    alignItems: "center",
-    zIndex: -1,
-  },
-  rowBackRight: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    width: 112,
-    backgroundColor: "#FF2B4E",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
