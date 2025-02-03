@@ -39,14 +39,12 @@ export function AddTask() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View>
-        {/* Close button */}
         <Button
           style={styles.closeButton}
           onPress={() => navigation.goBack()}
           icon="close"
         />
       </View>
-      {/* Task info display */}
       <View style={styles.top}>
         <TaskName task={task} setName={setTaskName} />
         {task.name && (

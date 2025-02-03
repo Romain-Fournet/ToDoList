@@ -24,7 +24,6 @@ export function Home() {
           toggleTaskCompletion={toggleTaskCompletion}
         />
       </View>
-
       <Button
         style={styles.addButton}
         onPress={() => navigation.navigate("AddTask")}
