@@ -6,6 +6,7 @@ import { useTaskContext } from "./context/TaskContext";
 import { Task } from "@types";
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { serializeTask } from "src/functions/task";
+import { SubTaskDisplayList } from "./SubTaskDisplayList";
 
 type Props = {
   tasks: Task[];
@@ -20,7 +21,6 @@ export function TasksList({
   deleteTask,
 }: Props) {
   const { colors } = useTheme();
-  const navigation = useNavigation();
   return (
     <SwipeListView
       data={tasks}
@@ -30,36 +30,18 @@ export function TasksList({
       //TODO Rerendre la hauteur du renderHiddenItem a chaque fois qu'on revient sur la page
       renderItem={({ item }) => (
         <View style={{ backgroundColor: colors.background }}>
-          <Pressable
-            onPress={() =>
-              navigation.navigate("ViewTask", {
-                task: serializeTask(item),
-              })
-            }
+          <TaskCard
+            key={item.id}
+            task={item}
+            toggleTaskCompletion={toggleTaskCompletion}
           >
-            <TaskCard
-              key={item.id}
-              task={item}
-              toggleTaskCompletion={toggleTaskCompletion}
-            >
-              {item.subTasks.length > 0 && (
-                <FlatList
-                  data={item.subTasks}
-                  renderItem={({ item }) => (
-                    <SubTaskCard
-                      key={item.id}
-                      toggleSubTaskCompletion={toggleSubTaskCompletion}
-                      subTask={item}
-                    />
-                  )}
-                  ItemSeparatorComponent={() => (
-                    <View style={{ height: 20 }}></View>
-                  )}
-                  keyExtractor={(item) => item.id.toString()}
-                ></FlatList>
-              )}
-            </TaskCard>
-          </Pressable>
+            {item.subTasks.length > 0 && (
+              <SubTaskDisplayList
+                subTasks={item.subTasks}
+                toggleSubTaskCompletion={toggleSubTaskCompletion}
+              />
+            )}
+          </TaskCard>
         </View>
       )}
       renderHiddenItem={({ item }) => (

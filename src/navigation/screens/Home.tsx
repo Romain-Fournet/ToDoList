@@ -36,10 +36,9 @@ export function Home() {
 
 const styles = StyleSheet.create({
   body: {
+    flex: 1,
     marginHorizontal: 22,
     rowGap: 32,
-    overflow: "hidden",
-    flex: 1,
     marginBottom: 70,
   },
   addButton: {
