@@ -65,19 +65,6 @@ export function useTaskManager() {
     setTotalTasks(totalTasks);
   };
 
-  const addSubTask = (task: Task, subTaskName: string) => {
-    const newSubTask: Task = {
-      id: Date.now(),
-      name: subTaskName,
-      category: task.category,
-      isComplete: false,
-      mainTaskId: task.id,
-      subTasks: [],
-      date: task.date,
-    };
-    task.subTasks = [...task.subTasks, newSubTask];
-  };
-
   const addTask = (newTask: Task) => {
     updateTotalTasks();
     setTasks((prevTasks) => [...prevTasks, newTask]);

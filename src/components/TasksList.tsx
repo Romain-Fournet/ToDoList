@@ -36,7 +36,6 @@ export function TasksList({
   const handleLayout = (taskId: number) => (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
     setRowHeights((prevHeights) => ({ ...prevHeights, [taskId]: height }));
-    console.log(`Task: ${taskId} -> ${height}, TotalTasks = ${totalTasks}`);
   };
 
   const [listKey, setListKey] = useState(Date.now());
