@@ -5,6 +5,8 @@ import { useTaskManager } from "../../hooks/useTasksManager";
 //Création du contexte
 type TaskContextType = {
   tasks: Task[];
+  totalTasks: number;
+  updateTotalTasks: () => void;
   addTask: (newTask: Task) => void;
   replaceTask: (modifiedTask: Task) => void;
   deleteTask: (id: number) => void;
@@ -14,11 +16,13 @@ type TaskContextType = {
 
 export const TaskContext = createContext<TaskContextType>({
   tasks: [],
+  totalTasks: 0,
   addTask: () => {},
   replaceTask: () => {},
   deleteTask: () => {},
   toggleTaskCompletion: () => {},
   toggleSubTaskCompletion: () => {},
+  updateTotalTasks: () => {},
 });
 
 type Props = {
@@ -29,6 +33,8 @@ type Props = {
 export default function TaskContextProvider({ children }: Props) {
   const {
     tasks,
+    totalTasks,
+    updateTotalTasks,
     addTask,
     replaceTask,
     deleteTask,
@@ -38,6 +44,8 @@ export default function TaskContextProvider({ children }: Props) {
 
   const valueTaskContext = {
     tasks,
+    totalTasks,
+    updateTotalTasks,
     addTask,
     replaceTask,
     deleteTask,

@@ -1,9 +1,11 @@
 import { useCallback, useState } from "react";
 import { Category, Task } from "../types";
 import { useCategoryContext } from "@components/context/CategoryContext";
+import { useTaskContext } from "@components/context/TaskContext";
 
 export function useTask(initialTask?: Task) {
   const { categories } = useCategoryContext();
+  const { updateTotalTasks } = useTaskContext();
 
   //Logique tache principale
   const emptyTask = {
@@ -52,6 +54,7 @@ export function useTask(initialTask?: Task) {
       }
       return updatedTask;
     });
+    updateTotalTasks();
   };
 
   const deleteSubTask = (id: number) => {
@@ -59,6 +62,7 @@ export function useTask(initialTask?: Task) {
       ...prevTask,
       subTasks: [...prevTask.subTasks.filter((subTask) => subTask.id !== id)],
     }));
+    updateTotalTasks();
   };
 
   const setSubTaskName = (id: number, name: string) => {

@@ -13,6 +13,7 @@ import { useTheme } from "@react-navigation/native";
 import { SubTaskDisplayList } from "./SubTaskDisplayList";
 import { DeleteTaskRowBack } from "./DeleteTaskRowBack";
 import { useEffect, useState } from "react";
+import { useTaskContext } from "./context/TaskContext";
 
 type Props = {
   tasks: Task[];
@@ -26,6 +27,8 @@ export function TasksList({
   toggleSubTaskCompletion,
   deleteTask,
 }: Props) {
+  const { totalTasks } = useTaskContext();
+
   const { colors } = useTheme();
 
   const [rowHeights, setRowHeights] = useState<{ [key: number]: number }>({});
@@ -33,14 +36,14 @@ export function TasksList({
   const handleLayout = (taskId: number) => (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
     setRowHeights((prevHeights) => ({ ...prevHeights, [taskId]: height }));
-    console.log(`Task: ${taskId} -> ${height}`);
+    console.log(`Task: ${taskId} -> ${height}, TotalTasks = ${totalTasks}`);
   };
 
   const [listKey, setListKey] = useState(Date.now());
 
   useEffect(() => {
     setListKey(Date.now());
-  }, [tasks]);
+  }, [totalTasks]);
 
   return (
     <SwipeListView

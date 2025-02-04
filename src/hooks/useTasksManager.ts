@@ -1,6 +1,7 @@
 import { Category, Task } from "../types";
 import { useContext, useState } from "react";
 import { CategoryContext } from "@components/context/CategoryContext";
+import { countTaskAndSubTasks } from "src/functions/task";
 
 export function useTaskManager() {
   const { categories } = useContext(CategoryContext);
@@ -57,6 +58,13 @@ export function useTaskManager() {
     },
   ]);
 
+  const [totalTasks, setTotalTasks] = useState(countTaskAndSubTasks(tasks));
+
+  const updateTotalTasks = () => {
+    const totalTasks = countTaskAndSubTasks(tasks);
+    setTotalTasks(totalTasks);
+  };
+
   const addSubTask = (task: Task, subTaskName: string) => {
     const newSubTask: Task = {
       id: Date.now(),
@@ -71,10 +79,12 @@ export function useTaskManager() {
   };
 
   const addTask = (newTask: Task) => {
+    updateTotalTasks();
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
   const deleteTask = (id: number) => {
+    updateTotalTasks();
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
@@ -135,6 +145,8 @@ export function useTaskManager() {
 
   return {
     tasks,
+    totalTasks,
+    updateTotalTasks,
     addTask,
     deleteTask,
     toggleTaskCompletion,
