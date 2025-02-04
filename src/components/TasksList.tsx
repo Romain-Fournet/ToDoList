@@ -1,13 +1,18 @@
-import { FlatList, Pressable, View, Text, StyleSheet } from "react-native";
+import {
+  FlatList,
+  Pressable,
+  View,
+  Text,
+  StyleSheet,
+  LayoutChangeEvent,
+} from "react-native";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { TaskCard } from "./TaskCard";
-import { SubTaskCard } from "./SubTaskCard";
-import { useTaskContext } from "./context/TaskContext";
 import { Task } from "@types";
-import { useNavigation, useTheme } from "@react-navigation/native";
-import { serializeTask } from "src/functions/task";
+import { useTheme } from "@react-navigation/native";
 import { SubTaskDisplayList } from "./SubTaskDisplayList";
 import { DeleteTaskRowBack } from "./DeleteTaskRowBack";
+import { useEffect, useState } from "react";
 
 type Props = {
   tasks: Task[];
@@ -23,14 +28,32 @@ export function TasksList({
 }: Props) {
   const { colors } = useTheme();
 
+  const [rowHeights, setRowHeights] = useState<{ [key: number]: number }>({});
+
+  const handleLayout = (taskId: number) => (event: LayoutChangeEvent) => {
+    const { height } = event.nativeEvent.layout;
+    setRowHeights((prevHeights) => ({ ...prevHeights, [taskId]: height }));
+    console.log(`Task: ${taskId} -> ${height}`);
+  };
+
+  const [listKey, setListKey] = useState(Date.now());
+
+  useEffect(() => {
+    setListKey(Date.now());
+  }, [tasks]);
+
   return (
     <SwipeListView
       data={tasks}
+      key={listKey}
       disableRightSwipe={true}
       stopRightSwipe={-112}
       rightOpenValue={-112}
       renderItem={({ item }) => (
-        <View style={{ backgroundColor: colors.background }}>
+        <View
+          style={{ backgroundColor: colors.background }}
+          onLayout={handleLayout(item.id)}
+        >
           <TaskCard
             key={item.id}
             task={item}
@@ -47,7 +70,13 @@ export function TasksList({
       )}
       //TODO Rerendre la hauteur du renderHiddenItem a chaque fois qu'on revient sur la page
       renderHiddenItem={({ item }) => (
-        <DeleteTaskRowBack deleteTask={deleteTask} taskId={item.id} />
+        <View style={{ height: rowHeights[item.id], flex: 1 }}>
+          <DeleteTaskRowBack
+            deleteTask={deleteTask}
+            taskId={item.id}
+            rowHeight={rowHeights[item.id]}
+          />
+        </View>
       )}
       keyExtractor={(item) => item.id.toString()}
     />
