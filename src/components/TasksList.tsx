@@ -68,7 +68,6 @@ export function TasksList({
           </TaskCard>
         </View>
       )}
-      //TODO Rerendre la hauteur du renderHiddenItem a chaque fois qu'on revient sur la page
       renderHiddenItem={({ item }) => (
         <View style={{ height: rowHeights[item.id], flex: 1 }}>
           <DeleteTaskRowBack

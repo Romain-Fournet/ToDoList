@@ -79,11 +79,21 @@ export function useTaskManager() {
   };
 
   const toggleTaskCompletion = (id: number) => {
-    //TODO Ajouter un systeme pour le lien entre la tache principale et secondaires
     setTasks((prevTasks) =>
       prevTasks.map((task) => {
         if (task.id === id) {
-          return { ...task, isComplete: !task.isComplete };
+          const isComplete = !task.isComplete;
+          if (isComplete) {
+            return {
+              ...task,
+              isComplete: isComplete,
+              subTasks: task.subTasks.map((subTask) => ({
+                ...subTask,
+                isComplete: true,
+              })),
+            };
+          }
+          return { ...task, isComplete: isComplete };
         }
         return task;
       })
