@@ -104,13 +104,20 @@ export function useTaskManager() {
     setTasks((prevTasks) =>
       prevTasks.map((task) => {
         if (task.id === mainTaskId) {
+          const updatedSubTasks = task.subTasks.map((subTask) => {
+            return subTask.id === subTaskId
+              ? { ...subTask, isComplete: !subTask.isComplete }
+              : subTask;
+          });
+
+          const isMainTaskCompleted = updatedSubTasks.every(
+            (subTask) => subTask.isComplete
+          );
+
           return {
             ...task,
-            subTasks: task.subTasks?.map((subTask) =>
-              subTask.id === subTaskId
-                ? { ...subTask, isComplete: !subTask.isComplete }
-                : subTask
-            ),
+            isComplete: isMainTaskCompleted,
+            subTasks: updatedSubTasks,
           };
         }
         return task;
