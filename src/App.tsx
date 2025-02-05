@@ -6,6 +6,7 @@ import { Navigation } from "./navigation";
 import CategoryContextProvider from "@components/context/CategoryContext";
 import TaskContextProvider from "@components/context/TaskContext";
 import NewSubTaskContextProvider from "@components/context/NewSubTaskContext";
+import AppContextProvider from "@components/context/AppContext";
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -17,16 +18,18 @@ SplashScreen.preventAutoHideAsync();
 
 export function App() {
   return (
-    <CategoryContextProvider>
-      <TaskContextProvider>
-        <NewSubTaskContextProvider>
-          <Navigation
-            onReady={() => {
-              SplashScreen.hideAsync();
-            }}
-          />
-        </NewSubTaskContextProvider>
-      </TaskContextProvider>
-    </CategoryContextProvider>
+    <AppContextProvider>
+      <CategoryContextProvider>
+        <TaskContextProvider>
+          <NewSubTaskContextProvider>
+            <Navigation
+              onReady={() => {
+                SplashScreen.hideAsync();
+              }}
+            />
+          </NewSubTaskContextProvider>
+        </TaskContextProvider>
+      </CategoryContextProvider>
+    </AppContextProvider>
   );
 }

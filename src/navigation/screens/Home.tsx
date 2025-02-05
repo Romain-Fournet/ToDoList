@@ -6,29 +6,19 @@ import { useTaskContext } from "@components/context/TaskContext";
 import { HeaderDate } from "@components/HeaderDate";
 import { CategoriesSection } from "@components/CategoriesSection";
 import { TasksList } from "@components/TasksList";
+import { useAppContext } from "@components/context/AppContext";
+import { Calendar } from "../../components/ViewCalendar";
+import { ViewToday } from "@components/ViewToday";
 
 export function Home() {
-  const navigation = useNavigation();
-  const { tasks, toggleTaskCompletion, deleteTask, toggleSubTaskCompletion } =
-    useTaskContext();
-
+  const { view } = useAppContext();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.body}>
-        <HeaderDate beforeText="Today" />
-        <CategoriesSection />
-        <TasksList
-          tasks={tasks}
-          deleteTask={deleteTask}
-          toggleSubTaskCompletion={toggleSubTaskCompletion}
-          toggleTaskCompletion={toggleTaskCompletion}
-        />
+        <HeaderDate />
+        {view === "Calendar" && <Calendar />}
+        {view === "Today" && <ViewToday />}
       </View>
-      <Button
-        style={styles.addButton}
-        onPress={() => navigation.navigate("AddTask")}
-        icon="plus"
-      ></Button>
     </SafeAreaView>
   );
 }
