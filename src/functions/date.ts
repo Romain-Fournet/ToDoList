@@ -43,12 +43,10 @@ export const getDateWeekday = (nbDaysFromToday: number) => {
 
 export const getNextDates = (startDate: Date): Date[] => {
   const dates: Date[] = [];
-  console.log("Start date" + startDate);
 
   for (let i = 1; i < 31; i++) {
     const nextDate = new Date(startDate);
     nextDate.setDate(startDate.getDate() + i);
-    console.log(nextDate);
     dates.push(nextDate);
   }
 

@@ -1,17 +1,12 @@
-import { Button } from "@components/Button";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/core";
-import { useTaskContext } from "@components/context/TaskContext";
 import { HeaderDate } from "@components/HeaderDate";
-import { CategoriesSection } from "@components/CategoriesSection";
-import { TasksList } from "@components/TasksList";
-import { useAppContext } from "@components/context/AppContext";
 import { Calendar } from "../../components/ViewCalendar";
 import { ViewToday } from "@components/ViewToday";
+import { useHomeContext } from "@components/context/HomeContext";
 
 export function Home() {
-  const { view } = useAppContext();
+  const { view } = useHomeContext();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.body}>

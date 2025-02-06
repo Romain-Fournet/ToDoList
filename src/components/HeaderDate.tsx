@@ -2,15 +2,16 @@ import { Row } from "@components/Row";
 import { ThemedText } from "@components/ThemedText";
 import { Pressable, StyleSheet } from "react-native";
 import { getTodayDate } from "src/functions/date";
-import { useAppContext } from "./context/AppContext";
-import { useNavigation } from "@react-navigation/native";
+import { useHomeContext } from "./context/HomeContext";
 
 export function HeaderDate() {
-  const { view, setView } = useAppContext();
-  const navigation = useNavigation();
+  const { view, date, setView, setDate } = useHomeContext();
 
   const handleRowPressed = () => {
     const newView = view === "Calendar" ? "Today" : "Calendar";
+    if (newView === "Today") {
+      setDate(getTodayDate());
+    }
     setView(newView);
   };
 
@@ -29,7 +30,7 @@ export function HeaderDate() {
           textStyle="faded"
           style={{ fontWeight: "medium" }}
         >
-          {getTodayDate()}
+          {date}
         </ThemedText>
       </Row>
     </Pressable>
