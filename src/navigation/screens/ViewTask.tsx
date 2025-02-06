@@ -23,6 +23,8 @@ export function ViewTask({ route }: Props) {
     task,
     setTaskName,
     setTaskCategory,
+    setTaskStartTime,
+    setTaskEndTime,
     addSubTask,
     deleteSubTask,
     setSubTaskName,
@@ -65,6 +67,8 @@ export function ViewTask({ route }: Props) {
         onSavePress={onSavePress}
         setTaskCategory={setTaskCategory}
         setTaskDate={setTaskDate}
+        setTaskEndTime={setTaskEndTime}
+        setTaskStartTime={setTaskStartTime}
         task={task}
       />
     </SafeAreaView>

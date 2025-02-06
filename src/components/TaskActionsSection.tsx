@@ -6,11 +6,14 @@ import { useTheme } from "@react-navigation/native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { useDatePicker } from "@hooks/useDatePicker";
 import { CategorySelector } from "./CategorySelector";
+import { TimeSelector } from "./TimeSelector";
 
 type Props = {
   task: Task;
   setTaskCategory: (category: Category) => void;
   setTaskDate: (date: Date) => void;
+  setTaskStartTime: (date: Date) => void;
+  setTaskEndTime: (date: Date) => void;
   onSavePress: () => void;
 };
 
@@ -18,6 +21,8 @@ export function TaskActionsSection({
   task,
   setTaskCategory,
   setTaskDate,
+  setTaskStartTime,
+  setTaskEndTime,
   onSavePress,
 }: Props) {
   const { colors } = useTheme();
@@ -44,6 +49,12 @@ export function TaskActionsSection({
                 showDatePicker();
               }}
             />
+
+            <TimeSelector
+              task={task}
+              setTaskStartTime={setTaskStartTime}
+              setTaskEndTime={setTaskEndTime}
+            />
             <Button
               style={styles.plusButton}
               onPress={() => {
@@ -58,7 +69,7 @@ export function TaskActionsSection({
       <DateTimePickerModal
         display="inline"
         isVisible={isDatePickerVisible}
-        mode="datetime"
+        mode="date"
         onConfirm={handleConfirmDate}
         onCancel={hideDatePicker}
       />
@@ -74,7 +85,7 @@ const styles = StyleSheet.create({
   },
   clockButton: {
     width: 62,
-    backgroundColor: "#EFEFEF",
+    backgroundColor: "#dbdbdb",
   },
   plusButton: {
     flex: 1,

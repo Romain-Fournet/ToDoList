@@ -9,6 +9,8 @@ export type Task = {
   subTasks: Task[];
   //Obligé de mettre string pour la serialisation des dates
   date: Date | string;
+  startTime: string;
+  endTime: string;
 };
 
 export type Category = {

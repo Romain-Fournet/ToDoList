@@ -20,6 +20,8 @@ export function AddTask() {
     setTaskName,
     setTaskDate,
     setTaskCategory,
+    setTaskStartTime,
+    setTaskEndTime,
     addSubTask,
     deleteSubTask,
     setSubTaskName,
@@ -60,6 +62,8 @@ export function AddTask() {
         onSavePress={onSavePress}
         setTaskCategory={setTaskCategory}
         setTaskDate={setTaskDate}
+        setTaskEndTime={setTaskEndTime}
+        setTaskStartTime={setTaskStartTime}
         task={task}
       />
     </SafeAreaView>

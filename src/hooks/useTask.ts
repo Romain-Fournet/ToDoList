@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { Category, Task } from "../types";
 import { useCategoryContext } from "@components/context/CategoryContext";
 import { useTaskContext } from "@components/context/TaskContext";
+import { formatTime } from "src/functions/date";
 
 export function useTask(initialTask?: Task) {
   const { categories } = useCategoryContext();
@@ -15,6 +16,8 @@ export function useTask(initialTask?: Task) {
     isComplete: false,
     subTasks: [],
     date: new Date(),
+    startTime: formatTime(new Date()),
+    endTime: formatTime(new Date(new Date().getTime() + 60 * 60 * 1000)),
   };
 
   const [task, setTask] = useState(initialTask ? initialTask : emptyTask);
@@ -31,6 +34,16 @@ export function useTask(initialTask?: Task) {
     setTask((task) => ({ ...task, date }));
   };
 
+  const setTaskStartTime = (date: Date) => {
+    const formatedTime = formatTime(date);
+    setTask((task) => ({ ...task, startTime: formatedTime }));
+  };
+
+  const setTaskEndTime = (date: Date) => {
+    const formatedTime = formatTime(date);
+    setTask((task) => ({ ...task, endTime: formatedTime }));
+  };
+
   //Logique sous taches
 
   const addSubTask = (name: string, addTask?: (task: Task) => void) => {
@@ -42,6 +55,8 @@ export function useTask(initialTask?: Task) {
       mainTaskId: task.id,
       subTasks: [],
       date: task.date,
+      startTime: formatTime(new Date()),
+      endTime: formatTime(new Date(new Date().getTime() + 60 * 60 * 1000)),
     };
 
     setTask((prevTask) => {
@@ -78,6 +93,8 @@ export function useTask(initialTask?: Task) {
 
   return {
     task,
+    setTaskStartTime,
+    setTaskEndTime,
     setTaskName,
     setTaskCategory,
     setTaskDate,
