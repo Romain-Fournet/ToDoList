@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { ThemedText } from "./ThemedText";
 import { Row } from "./Row";
+import { formatTime } from "src/functions/date";
 
 type StartTimeSelectorProps = {
   task: Task;
@@ -23,7 +24,7 @@ function StartTimeSelector({ task, setTaskStartTime }: StartTimeSelectorProps) {
     <>
       <Pressable style={styles.card} onPress={showDatePicker}>
         <ThemedText textStyle="normal" variant="subtitle">
-          {time || "00:00"}
+          {formatTime(time)}
         </ThemedText>
       </Pressable>
       <DateTimePickerModal
@@ -32,6 +33,7 @@ function StartTimeSelector({ task, setTaskStartTime }: StartTimeSelectorProps) {
         mode="time"
         onConfirm={handleConfirmDate}
         onCancel={hideDatePicker}
+        date={task.startTime}
       />
     </>
   );
@@ -55,7 +57,7 @@ function EndTimeSelector({ task, setTaskEndTime }: EndTimeSelectorProps) {
     <>
       <Pressable style={styles.card} onPress={showDatePicker}>
         <ThemedText textStyle="normal" variant="subtitle">
-          {time || "00:00"}
+          {formatTime(time)}
         </ThemedText>
       </Pressable>
       <DateTimePickerModal
@@ -64,6 +66,7 @@ function EndTimeSelector({ task, setTaskEndTime }: EndTimeSelectorProps) {
         mode="time"
         onConfirm={handleConfirmDate}
         onCancel={hideDatePicker}
+        date={task.endTime}
       />
     </>
   );

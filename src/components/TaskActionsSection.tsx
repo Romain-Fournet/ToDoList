@@ -72,6 +72,7 @@ export function TaskActionsSection({
         mode="date"
         onConfirm={handleConfirmDate}
         onCancel={hideDatePicker}
+        date={task.date instanceof Date ? task.date : new Date()}
       />
     </>
   );

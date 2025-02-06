@@ -3,6 +3,7 @@ import { Category, Task } from "../types";
 import { useCategoryContext } from "@components/context/CategoryContext";
 import { useTaskContext } from "@components/context/TaskContext";
 import { formatTime } from "src/functions/date";
+import { showAlert } from "src/functions/alert";
 
 export function useTask(initialTask?: Task) {
   const { categories } = useCategoryContext();
@@ -16,8 +17,8 @@ export function useTask(initialTask?: Task) {
     isComplete: false,
     subTasks: [],
     date: new Date(),
-    startTime: formatTime(new Date()),
-    endTime: formatTime(new Date(new Date().getTime() + 60 * 60 * 1000)),
+    startTime: new Date(),
+    endTime: new Date(new Date().getTime() + 60 * 60 * 1000),
   };
 
   const [task, setTask] = useState(initialTask ? initialTask : emptyTask);
@@ -35,13 +36,19 @@ export function useTask(initialTask?: Task) {
   };
 
   const setTaskStartTime = (date: Date) => {
-    const formatedTime = formatTime(date);
-    setTask((task) => ({ ...task, startTime: formatedTime }));
+    if (date < task.endTime) {
+      setTask((task) => ({ ...task, startTime: date }));
+    } else {
+      showAlert("Invalid start time", "The task cannot start after it ends.");
+    }
   };
 
   const setTaskEndTime = (date: Date) => {
-    const formatedTime = formatTime(date);
-    setTask((task) => ({ ...task, endTime: formatedTime }));
+    if (date > task.startTime) {
+      setTask((task) => ({ ...task, endTime: date }));
+    } else {
+      showAlert("Invalid end time", "The task cannot end before it start.");
+    }
   };
 
   //Logique sous taches
@@ -55,8 +62,8 @@ export function useTask(initialTask?: Task) {
       mainTaskId: task.id,
       subTasks: [],
       date: task.date,
-      startTime: formatTime(new Date()),
-      endTime: formatTime(new Date(new Date().getTime() + 60 * 60 * 1000)),
+      startTime: new Date(),
+      endTime: new Date(new Date().getTime() + 60 * 60 * 1000),
     };
 
     setTask((prevTask) => {
