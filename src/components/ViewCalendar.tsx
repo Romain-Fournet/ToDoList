@@ -1,12 +1,19 @@
 import { useTaskContext } from "@components/context/TaskContext";
-import { Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { DaysList } from "./DayList";
 
 export function Calendar() {
   const { tasks } = useTaskContext();
 
   return (
-    <>
-      <Text>CALENDAR</Text>
-    </>
+    <View style={styles.container}>
+      <DaysList />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    rowGap: 32,
+  },
+});
