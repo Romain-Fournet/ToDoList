@@ -7,6 +7,7 @@ import CategoryContextProvider from "@components/context/CategoryContext";
 import TaskContextProvider from "@components/context/TaskContext";
 import NewSubTaskContextProvider from "@components/context/NewSubTaskContext";
 import AppContextProvider from "@components/context/AppContext";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -22,11 +23,13 @@ export function App() {
       <CategoryContextProvider>
         <TaskContextProvider>
           <NewSubTaskContextProvider>
-            <Navigation
-              onReady={() => {
-                SplashScreen.hideAsync();
-              }}
-            />
+            <GestureHandlerRootView>
+              <Navigation
+                onReady={() => {
+                  SplashScreen.hideAsync();
+                }}
+              />
+            </GestureHandlerRootView>
           </NewSubTaskContextProvider>
         </TaskContextProvider>
       </CategoryContextProvider>

@@ -1,5 +1,4 @@
-import { StyleSheet } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { StyleSheet, View } from "react-native";
 import { Task } from "@types";
 import { NewSubTaskInput } from "./NewSubTaskInput";
 import { SubTaskEditorList } from "./SubTaskEditorList";
@@ -19,14 +18,14 @@ export function SubTaskSection({
 }: Props) {
   return (
     <>
-      <GestureHandlerRootView style={styles.container}>
+      <View style={styles.container}>
         <NewSubTaskInput addSubTask={addSubTask} />
         <SubTaskEditorList
           subTasks={subTasks}
           deleteSubTask={deleteSubTask}
           setSubTaskName={setSubTaskName}
         />
-      </GestureHandlerRootView>
+      </View>
     </>
   );
 }
