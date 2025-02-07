@@ -34,7 +34,7 @@ export function countTaskAndSubTasks(tasks: Task[]): number {
   return taskCount + subTaskCount;
 }
 
-export function getTasksStyle(
+export function getTasksAndStyles(
   tasks: Task[],
   eventMaxWidth: number,
   setTasksAndStyles: (tasksAndStyles: TaskStyle[]) => void
