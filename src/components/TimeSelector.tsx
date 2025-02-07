@@ -34,6 +34,7 @@ function StartTimeSelector({ task, setTaskStartTime }: StartTimeSelectorProps) {
         onConfirm={handleConfirmDate}
         onCancel={hideDatePicker}
         date={task.startTime}
+        minuteInterval={5}
       />
     </>
   );
@@ -67,6 +68,7 @@ function EndTimeSelector({ task, setTaskEndTime }: EndTimeSelectorProps) {
         onConfirm={handleConfirmDate}
         onCancel={hideDatePicker}
         date={task.endTime}
+        minuteInterval={5}
       />
     </>
   );

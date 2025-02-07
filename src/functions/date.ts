@@ -41,6 +41,20 @@ export const getDateWeekday = (nbDaysFromToday: number) => {
   return dayFormat;
 };
 
+export const getDaysFromToday = (date: Date) => {
+  const today = new Date();
+
+  today.setHours(0, 0, 0, 0);
+  date.setHours(0, 0, 0, 0);
+
+  const differenceInMilliseconds = date.getTime() - today.getTime();
+  const differenceInDays = Math.round(
+    differenceInMilliseconds / (1000 * 60 * 60 * 24)
+  );
+
+  return differenceInDays;
+};
+
 export const getNextDates = (startDate: Date): Date[] => {
   const dates: Date[] = [];
 

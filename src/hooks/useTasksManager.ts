@@ -12,7 +12,9 @@ export function useTaskManager() {
       category: categories[0],
       isComplete: false,
       subTasks: [],
-      date: new Date(),
+      date: new Date("2025-02-07T00:00:00"),
+      startTime: new Date("2025-02-09T07:00:00"),
+      endTime: new Date("2025-02-09T08:00:00"),
     },
     {
       id: 2,
@@ -20,7 +22,9 @@ export function useTaskManager() {
       category: categories[0],
       isComplete: true,
       subTasks: [],
-      date: new Date(),
+      date: new Date("2025-02-07T00:00:00"),
+      startTime: new Date("2025-02-09T12:00:00"),
+      endTime: new Date("2025-02-09T15:00:00"),
     },
     {
       id: 3,
@@ -28,7 +32,9 @@ export function useTaskManager() {
       category: categories[0],
       isComplete: false,
       subTasks: [],
-      date: new Date(),
+      date: new Date("2025-02-08T00:00:00"),
+      startTime: new Date("2025-02-09T16:00:00"),
+      endTime: new Date("2025-02-09T17:00:00"),
     },
     {
       id: 4,
@@ -36,13 +42,18 @@ export function useTaskManager() {
       category: categories[0],
       isComplete: false,
       subTasks: [],
-      date: new Date(),
+      date: new Date("2025-02-08T00:00:00"),
+      startTime: new Date("2025-02-09T08:00:00"),
+      endTime: new Date("2025-02-09T10:00:00"),
     },
     {
       id: 5,
       name: "Drink more water",
       category: categories[0],
       isComplete: true,
+      date: new Date("2025-02-09T00:00:00"),
+      startTime: new Date("2025-02-09T08:00:00"),
+      endTime: new Date("2025-02-09T10:00:00"),
       subTasks: [
         {
           id: 1,
@@ -52,9 +63,10 @@ export function useTaskManager() {
           mainTaskId: 5,
           subTasks: [],
           date: new Date(),
+          startTime: new Date(),
+          endTime: new Date(new Date().getTime() + 60 * 60 * 1000),
         },
       ],
-      date: new Date(),
     },
   ]);
 

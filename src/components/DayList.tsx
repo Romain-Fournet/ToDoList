@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
 import { DateCard } from "./DateCard";
+import { View } from "react-native";
 
-export function DaysList() {
+type Props = {
+  selectedDay: number;
+  setSelectedDay: (day: number) => void;
+};
+
+export function DaysList({ selectedDay, setSelectedDay }: Props) {
   const [days, setDays] = useState<number[]>([...Array(31).keys()]);
-  const [selectedDay, setSelectedDay] = useState(0);
 
   const getMoreDays = () => {
     const lastDay = days[days.length - 1];
@@ -13,20 +18,22 @@ export function DaysList() {
   };
 
   return (
-    <FlatList
-      data={days}
-      renderItem={({ item }) => (
-        <DateCard
-          nbDaysFromToday={item}
-          isSelected={item === selectedDay}
-          setSelectedDay={setSelectedDay}
-        />
-      )}
-      onEndReached={getMoreDays}
-      onEndReachedThreshold={0.1}
-      horizontal={true}
-      keyExtractor={(item) => item.toString()}
-      contentContainerStyle={{ gap: 12 }}
-    />
+    <View>
+      <FlatList
+        data={days}
+        renderItem={({ item }) => (
+          <DateCard
+            nbDaysFromToday={item}
+            isSelected={item === selectedDay}
+            setSelectedDay={setSelectedDay}
+          />
+        )}
+        onEndReached={getMoreDays}
+        onEndReachedThreshold={0.1}
+        horizontal={true}
+        keyExtractor={(item) => item.toString()}
+        contentContainerStyle={{ gap: 12 }}
+      />
+    </View>
   );
 }

@@ -19,20 +19,6 @@ export function ViewToday() {
         toggleSubTaskCompletion={toggleSubTaskCompletion}
         toggleTaskCompletion={toggleTaskCompletion}
       />
-      <Button
-        style={styles.addButton}
-        onPress={() => navigation.navigate("AddTask")}
-        icon="plus"
-      />
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  addButton: {
-    position: "absolute",
-    bottom: -70,
-    right: 0,
-    width: 60,
-  },
-});
