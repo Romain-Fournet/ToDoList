@@ -32,6 +32,7 @@ export function TasksList({
   const { colors } = useTheme();
 
   const [rowHeights, setRowHeights] = useState<{ [key: number]: number }>({});
+  const [previousTotalTasks, setPreviousTotalTasks] = useState(totalTasks);
 
   const handleLayout = (taskId: number) => (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
@@ -41,7 +42,10 @@ export function TasksList({
   const [listKey, setListKey] = useState(Date.now());
 
   useEffect(() => {
-    setListKey(Date.now());
+    if (totalTasks > previousTotalTasks) {
+      setListKey(Date.now());
+      setPreviousTotalTasks(totalTasks);
+    }
   }, [totalTasks]);
 
   return (
