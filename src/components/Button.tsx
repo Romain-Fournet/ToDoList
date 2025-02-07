@@ -5,12 +5,17 @@ import { ThemedText } from "@components/ThemedText";
 type Props = ViewProps & {
   icon?: keyof typeof ButtonIcons;
   text?: string;
+  disabled?: boolean;
   onPress: () => void;
 };
 
-export function Button({ onPress, icon, text, style }: Props) {
+export function Button({ onPress, icon, text, style, disabled }: Props) {
   return (
-    <Pressable onPress={onPress} style={[styles.body, style]}>
+    <Pressable
+      disabled={disabled}
+      onPress={onPress}
+      style={[styles.body, style]}
+    >
       {icon && (
         <Image
           source={ButtonIcons[icon].image}

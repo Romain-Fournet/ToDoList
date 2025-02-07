@@ -61,6 +61,7 @@ export function TaskActionsSection({
                 onSavePress();
               }}
               text={"Save"}
+              disabled={task.name ? false : true}
             />
           </Row>
         </View>
