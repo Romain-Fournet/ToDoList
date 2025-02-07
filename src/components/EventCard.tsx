@@ -2,6 +2,8 @@ import { Pressable, StyleSheet, View } from "react-native";
 import { Row } from "./Row";
 import { ThemedText } from "./ThemedText";
 import { Task } from "@types";
+import { useNavigation } from "@react-navigation/native";
+import { serializeTask } from "src/functions/task";
 
 type Props = {
   task: Task;
@@ -9,8 +11,15 @@ type Props = {
 };
 
 export function EventCard({ task, style }: Props) {
+  const navigation = useNavigation();
+
+  const handleOnPress = () => {
+    navigation.navigate("ViewTask", {
+      task: serializeTask(task),
+    });
+  };
   return (
-    <Pressable style={[style, styles.container]}>
+    <Pressable onPress={handleOnPress} style={[style, styles.container]}>
       <View
         style={[
           styles.background,

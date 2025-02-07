@@ -41,10 +41,9 @@ export function getTasksAndStyles(
 ) {
   const calculatedStyles: TaskStyle[] = [];
 
-  // Calcul du nombre de tâches qui se chevauchent à un moment donné
   for (let i = 0; i < tasks.length; i++) {
     const iTask = tasks[i];
-    let cptSameTimeTasks = 1; // On commence avec 1, pour la tâche elle-même
+    let cptSameTimeTasks = 1;
     let cptSameTimeTaskBefore = 0;
 
     for (let j = 0; j < tasks.length; j++) {
@@ -59,13 +58,12 @@ export function getTasksAndStyles(
         const jEndMinutes =
           jTask.endTime.getHours() * 60 + jTask.endTime.getMinutes();
 
-        // Vérifie si les deux tâches se chevauchent
         if (
           (jStartMinutes >= iStartMinutes && jStartMinutes < iEndMinutes) ||
           (jEndMinutes > iStartMinutes && jEndMinutes <= iEndMinutes) ||
           (jStartMinutes <= iStartMinutes && jEndMinutes >= iEndMinutes)
         ) {
-          cptSameTimeTasks += 1; // Incrémente si les tâches se chevauchent
+          cptSameTimeTasks += 1;
           if (j < i) {
             cptSameTimeTaskBefore += 1;
           }
@@ -73,7 +71,6 @@ export function getTasksAndStyles(
       }
     }
 
-    // Calcul des styles (largeur, hauteur, position top)
     const start =
       iTask.startTime.getMinutes() + iTask.startTime.getHours() * 60;
     const end = iTask.endTime.getMinutes() + iTask.endTime.getHours() * 60;
@@ -81,14 +78,6 @@ export function getTasksAndStyles(
     const height = minutedDuration * 1.5;
     const top = start * 1.5;
 
-    console.log(iTask.name);
-    console.log(
-      `width: ${
-        eventMaxWidth / cptSameTimeTasks
-      }  height : ${height} top: ${top}
-        before: ${cptSameTimeTaskBefore}`
-    );
-    // Enregistre le style calculé
     calculatedStyles.push({
       task: iTask,
       style: {
@@ -100,6 +89,5 @@ export function getTasksAndStyles(
     });
   }
 
-  // Met à jour l'état avec les styles calculés
   setTasksAndStyles(calculatedStyles);
 }
