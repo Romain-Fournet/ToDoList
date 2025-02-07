@@ -19,3 +19,9 @@ export type Category = {
   illustration: keyof typeof Icons;
   color: string;
 };
+
+//For calendar view
+export type TaskStyle = {
+  task: Task;
+  style: { width: number; height: number; top: number; left: number };
+};
