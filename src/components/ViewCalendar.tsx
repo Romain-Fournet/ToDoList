@@ -2,9 +2,8 @@ import { useTaskContext } from "@components/context/TaskContext";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { DaysList } from "./DayList";
 import { useEffect, useRef, useState } from "react";
-import { formatTime, getDaysFromToday } from "src/functions/date";
-import { FlatList } from "react-native-gesture-handler";
-import { Task, TaskStyle } from "@types";
+import { getDaysFromToday } from "src/functions/date";
+import { TaskStyle } from "@types";
 import { ThemedText } from "./ThemedText";
 import { Row } from "./Row";
 import { getTasksStyle } from "src/functions/task";
@@ -15,6 +14,13 @@ export function Calendar() {
 
   const [eventMaxWidth, setEventMaxWidth] = useState(0);
   const [tasksAndStyles, setTasksAndStyle] = useState<TaskStyle[]>([]);
+
+  const scrollViewRef = useRef<ScrollView>(null);
+  useEffect(() => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ y: 540, animated: true });
+    }
+  }, [eventMaxWidth]);
 
   useEffect(() => {
     console.log("Effect");
@@ -36,6 +42,7 @@ export function Calendar() {
     <View style={styles.container}>
       <DaysList selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
       <ScrollView
+        ref={scrollViewRef}
         onLayout={(event) => {
           const { width } = event.nativeEvent.layout;
           setEventMaxWidth(width - 56);
