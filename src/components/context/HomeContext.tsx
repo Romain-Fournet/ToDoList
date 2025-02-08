@@ -1,7 +1,7 @@
-import { createContext, ReactNode, useContext } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { Category } from "@types";
 import { useCategoryManager } from "@hooks/useCategoryManager";
-import { useHome } from "@hooks/useHome";
+import { getTodayDate } from "src/functions/date";
 
 //Création du contexte
 type HomeContextType = {
@@ -24,7 +24,8 @@ type Props = {
 
 //Installation du contexte
 export default function HomeContextProvider({ children }: Props) {
-  const { view, date, setDate, setView } = useHome();
+  const [view, setView] = useState<"Calendar" | "Today">("Today");
+  const [date, setDate] = useState(getTodayDate());
 
   const valueHomeContext = {
     view,

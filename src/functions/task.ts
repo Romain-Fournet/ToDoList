@@ -34,6 +34,7 @@ export function countTaskAndSubTasks(tasks: Task[]): number {
   return taskCount + subTaskCount;
 }
 
+//TODO Split la fonction
 export function getTasksAndStyles(
   tasks: Task[],
   eventMaxWidth: number,
