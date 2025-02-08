@@ -1,6 +1,4 @@
 import { createContext, ReactNode, useContext } from "react";
-import { Category } from "@types";
-import { useCategoryManager } from "@hooks/useCategoryManager";
 import { useUserPreferences } from "@hooks/useUserPreferences";
 
 //Création du contexte

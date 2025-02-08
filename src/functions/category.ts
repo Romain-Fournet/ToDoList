@@ -1,4 +1,4 @@
-import { Category, Task } from "../types";
+import { Task } from "../types";
 
 export function getAssociatedTasks(idCategory: number, tasks: Task[]): number {
   return tasks.reduce(

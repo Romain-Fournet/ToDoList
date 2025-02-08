@@ -1,6 +1,4 @@
-import { useTaskContext } from "@components/context/TaskContext";
 import { Task, TaskStyle } from "../types";
-import { useEffect, useState } from "react";
 
 export function serializeTask(task: Task) {
   const serializedTask = {

@@ -1,11 +1,9 @@
 import { useTaskContext } from "@components/context/TaskContext";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { DaysList } from "./DayList";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getDaysFromToday } from "src/functions/date";
 import { TaskStyle } from "@types";
-import { ThemedText } from "./ThemedText";
-import { Row } from "./Row";
 import { getTasksAndStyles } from "src/functions/task";
 import { HoursBar } from "./HoursBar";
 import { EventCard } from "./EventCard";

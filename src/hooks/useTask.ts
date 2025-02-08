@@ -1,8 +1,7 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Category, Task } from "../types";
 import { useCategoryContext } from "@components/context/CategoryContext";
 import { useTaskContext } from "@components/context/TaskContext";
-import { formatTime } from "src/functions/date";
 import { showAlert } from "src/functions/alert";
 
 export function useTask(initialTask?: Task) {

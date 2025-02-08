@@ -1,7 +1,6 @@
 import { Icons } from "../consts/Icons";
 import { Category } from "../types";
 import { useState } from "react";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export function useCategoryManager() {
   const [categories, setCategories] = useState<Category[]>([

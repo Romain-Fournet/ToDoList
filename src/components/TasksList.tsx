@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  Pressable,
-  View,
-  Text,
-  StyleSheet,
-  LayoutChangeEvent,
-} from "react-native";
+import { View, LayoutChangeEvent } from "react-native";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { TaskCard } from "./TaskCard";
 import { Task } from "@types";

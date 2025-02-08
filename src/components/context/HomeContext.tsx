@@ -1,6 +1,4 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { Category } from "@types";
-import { useCategoryManager } from "@hooks/useCategoryManager";
 import { getTodayDate } from "src/functions/date";
 
 //Création du contexte

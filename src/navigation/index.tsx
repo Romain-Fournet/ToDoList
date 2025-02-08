@@ -1,11 +1,8 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HeaderButton, Text } from "@react-navigation/elements";
 import {
   createStaticNavigation,
   StaticParamList,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Image } from "react-native";
 import { Home } from "./screens/Home";
 import { AddTask } from "./screens/AddTask";
 import { ViewTask } from "./screens/ViewTask";

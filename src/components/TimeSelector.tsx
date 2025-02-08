@@ -1,9 +1,8 @@
 import { useDatePicker } from "@hooks/useDatePicker";
 import { Task } from "@types";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { ThemedText } from "./ThemedText";
-import { Row } from "./Row";
 import { formatTime } from "src/functions/date";
 
 type StartTimeSelectorProps = {

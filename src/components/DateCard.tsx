@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 import { ThemedText } from "./ThemedText";
 import { getDateMonth, getDateWeekday } from "src/functions/date";
 import { useHomeContext } from "./context/HomeContext";

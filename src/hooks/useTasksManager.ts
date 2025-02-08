@@ -1,4 +1,4 @@
-import { Category, Task } from "../types";
+import { Task } from "../types";
 import { useContext, useState } from "react";
 import { CategoryContext } from "@components/context/CategoryContext";
 import { countTaskAndSubTasks } from "src/functions/task";

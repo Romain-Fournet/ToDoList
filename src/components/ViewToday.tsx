@@ -1,8 +1,5 @@
-import { StyleSheet, View } from "react-native";
 import { CategoriesSection } from "./CategoriesSection";
-import { HeaderDate } from "./HeaderDate";
 import { TasksList } from "./TasksList";
-import { Button } from "./Button";
 import { useNavigation } from "@react-navigation/native";
 import { useTaskContext } from "./context/TaskContext";
 
