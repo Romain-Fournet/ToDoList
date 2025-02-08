@@ -1,6 +1,7 @@
 import { ButtonIcons } from "@const/ButtonIcons";
 import { Pressable, Image, StyleSheet, ViewProps } from "react-native";
 import { ThemedText } from "@components/ThemedText";
+import { Colors } from "@const/Colors";
 
 type Props = ViewProps & {
   icon?: keyof typeof ButtonIcons;
@@ -23,7 +24,7 @@ export function Button({ onPress, icon, text, style, disabled }: Props) {
         ></Image>
       )}
       {text && (
-        <ThemedText variant="body" style={{ color: "#FFFFFF" }}>
+        <ThemedText variant="body" style={styles.text}>
           {text}
         </ThemedText>
       )}
@@ -35,8 +36,9 @@ const styles = StyleSheet.create({
   body: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#393433",
+    backgroundColor: Colors.lightBlack,
     borderRadius: 12,
     height: 60,
   },
+  text: { color: Colors.white },
 });

@@ -1,6 +1,7 @@
 import { Category } from "../types";
 import { StyleSheet, View } from "react-native";
 import { ThemedText } from "@components/ThemedText";
+import { Colors } from "@const/Colors";
 
 type Props = { category: Category; selected?: boolean };
 
@@ -11,12 +12,12 @@ export function CategoryLabel({ category, selected }: Props) {
 
   const backgroundColor =
     selected || selected === undefined
-      ? { backgroundColor: category.color }
-      : { backgroundColor: "#666666" };
+      ? { backgroundColor: category.color, opacity: 0.1 }
+      : { backgroundColor: Colors.lightGrey };
   const textColor =
     selected || selected === undefined
       ? { color: category.color }
-      : { color: "#8a8a8a" };
+      : { color: Colors.grey };
 
   return (
     <View style={styles.body}>
@@ -36,12 +37,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   background: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    opacity: 0.1,
+    ...StyleSheet.absoluteFillObject,
   },
   text: {
     fontWeight: "semibold",

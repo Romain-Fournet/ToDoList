@@ -6,6 +6,7 @@ import { Task } from "@types";
 import { CategoryLabel } from "./CategoryLabel";
 import { serializeTask } from "src/functions/task";
 import { useNavigation } from "@react-navigation/native";
+import { Colors } from "@const/Colors";
 
 type Props = {
   children?: React.ReactNode;
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#D9D9D9",
+    borderBottomColor: Colors.lightGrey,
   },
   childrenWraper: {
     marginTop: 20,

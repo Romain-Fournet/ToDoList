@@ -1,6 +1,7 @@
 import { useTheme } from "@react-navigation/native";
 import { Pressable, View, Text, StyleSheet } from "react-native";
 import { Row } from "./Row";
+import { Colors } from "@const/Colors";
 
 type Props = {
   deleteTask: (id: number) => void;
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   },
   rowBackRight: {
     width: 112,
-    backgroundColor: "#FF2B4E",
+    backgroundColor: Colors.red,
     alignItems: "center",
     justifyContent: "center",
     height: "100%",

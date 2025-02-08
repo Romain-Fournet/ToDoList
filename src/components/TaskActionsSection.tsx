@@ -7,6 +7,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { useDatePicker } from "@hooks/useDatePicker";
 import { CategorySelector } from "./CategorySelector";
 import { TimeSelector } from "./TimeSelector";
+import { Colors } from "@const/Colors";
 
 type Props = {
   task: Task;
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
   },
   clockButton: {
     width: 62,
-    backgroundColor: "#dbdbdb",
+    backgroundColor: Colors.lightGrey,
   },
   plusButton: {
     flex: 1,

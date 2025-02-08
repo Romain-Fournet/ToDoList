@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, View } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { ThemedText } from "./ThemedText";
 import { formatTime } from "src/functions/date";
+import { Colors } from "@const/Colors";
 
 type StartTimeSelectorProps = {
   task: Task;
@@ -96,6 +97,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingVertical: 4,
     paddingHorizontal: 6,
-    backgroundColor: "#dbdbdb",
+    backgroundColor: Colors.lightGrey,
   },
 });
