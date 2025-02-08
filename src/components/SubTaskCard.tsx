@@ -48,9 +48,7 @@ export function SubTaskCard({
           >
             <CheckBox checked={subTask.isComplete} />
           </Pressable>
-          <ThemedText variant="body" textStyle="normal">
-            {subTask.name}
-          </ThemedText>
+          <ThemedText variant="body">{subTask.name}</ThemedText>
         </Row>
       </View>
     );

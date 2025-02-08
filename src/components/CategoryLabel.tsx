@@ -21,11 +21,7 @@ export function CategoryLabel({ category, selected }: Props) {
   return (
     <View style={styles.body}>
       <View style={[styles.background, backgroundColor]} />
-      <ThemedText
-        variant="subtitle"
-        textStyle="normal"
-        style={[textColor, styles.text]}
-      >
+      <ThemedText variant="subtitle" style={[textColor, styles.text]}>
         {category.name.toUpperCase()}
       </ThemedText>
     </View>

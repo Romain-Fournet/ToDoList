@@ -23,11 +23,7 @@ export function Button({ onPress, icon, text, style, disabled }: Props) {
         ></Image>
       )}
       {text && (
-        <ThemedText
-          variant="body"
-          textStyle="normal"
-          style={{ color: "#FFFFFF" }}
-        >
+        <ThemedText variant="body" style={{ color: "#FFFFFF" }}>
           {text}
         </ThemedText>
       )}

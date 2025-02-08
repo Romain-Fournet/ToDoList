@@ -33,9 +33,7 @@ export function TaskCard({ task, toggleTaskCompletion, children }: Props) {
           >
             <CheckBox checked={task.isComplete} />
           </Pressable>
-          <ThemedText variant="body" textStyle="normal">
-            {task.name}
-          </ThemedText>
+          <ThemedText variant="body">{task.name}</ThemedText>
         </Row>
         <Row gap={16}>
           <View style={{ width: 26, height: 26 }}></View>

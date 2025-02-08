@@ -27,18 +27,11 @@ export function CategoryCard({
           height={24}
         ></Image>
         <Row>
-          <ThemedText
-            variant="body"
-            textStyle="normal"
-            style={{ fontWeight: "bold" }}
-          >
+          <ThemedText variant="body" style={{ fontWeight: "bold" }}>
             {numberTasksAssociated + " "}
           </ThemedText>
-          <ThemedText
-            variant="body"
-            textStyle="faded"
-            style={{ fontWeight: "medium" }}
-          >
+          {/* TODO fade text */}
+          <ThemedText variant="body" style={{ fontWeight: "medium" }}>
             {category.name}
           </ThemedText>
         </Row>

@@ -1,20 +1,11 @@
-import { TextStyle } from "@const/TextStyle";
-import { useTextStyles } from "@hooks/useTextStyles";
 import { Text, TextProps } from "react-native";
 
 type Props = TextProps & {
-  textStyle: keyof (typeof TextStyle)["light"];
   variant: keyof typeof styles;
 };
 
-export function ThemedText({ textStyle, variant, style, ...rest }: Props) {
-  const textStyles = useTextStyles();
-  return (
-    <Text
-      style={[styles[variant] ?? styles.body, textStyles[textStyle], style]}
-      {...rest}
-    />
-  );
+export function ThemedText({ variant, style, ...rest }: Props) {
+  return <Text style={[styles[variant] ?? styles.body, style]} {...rest} />;
 }
 
 const styles = {

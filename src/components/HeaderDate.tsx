@@ -18,18 +18,11 @@ export function HeaderDate() {
   return (
     <Pressable onPress={() => handleRowPressed()}>
       <Row style={styles.date} gap={10}>
-        <ThemedText
-          variant="heading"
-          textStyle="normal"
-          style={{ fontWeight: "bold" }}
-        >
+        <ThemedText variant="heading" style={{ fontWeight: "bold" }}>
           {view}
         </ThemedText>
-        <ThemedText
-          variant="heading"
-          textStyle="faded"
-          style={{ fontWeight: "medium" }}
-        >
+        {/*TODO fade text */}
+        <ThemedText variant="heading" style={{ fontWeight: "medium" }}>
           {date}
         </ThemedText>
       </Row>

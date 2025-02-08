@@ -32,12 +32,8 @@ export function DateCard({
         { backgroundColor: backgroundColor, opacity: isSelected ? 1 : 0.3 },
       ]}
     >
-      <ThemedText textStyle="normal" variant="subtitle">
-        {weekday.toUpperCase()}
-      </ThemedText>
-      <ThemedText textStyle="normal" variant="body">
-        {num}
-      </ThemedText>
+      <ThemedText variant="subtitle">{weekday.toUpperCase()}</ThemedText>
+      <ThemedText variant="body">{num}</ThemedText>
     </Pressable>
   );
 }

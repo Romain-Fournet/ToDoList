@@ -37,9 +37,7 @@ export function EventCard({ task, style }: Props) {
             },
           ]}
         />
-        <ThemedText textStyle="normal" variant="body">
-          {task.name}
-        </ThemedText>
+        <ThemedText variant="body">{task.name}</ThemedText>
       </Row>
     </Pressable>
   );

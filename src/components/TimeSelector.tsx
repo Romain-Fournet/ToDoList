@@ -23,9 +23,7 @@ function StartTimeSelector({ task, setTaskStartTime }: StartTimeSelectorProps) {
   return (
     <>
       <Pressable style={styles.card} onPress={showDatePicker}>
-        <ThemedText textStyle="normal" variant="subtitle">
-          {formatTime(time)}
-        </ThemedText>
+        <ThemedText variant="subtitle">{formatTime(time)}</ThemedText>
       </Pressable>
       <DateTimePickerModal
         display="spinner"
@@ -57,9 +55,7 @@ function EndTimeSelector({ task, setTaskEndTime }: EndTimeSelectorProps) {
   return (
     <>
       <Pressable style={styles.card} onPress={showDatePicker}>
-        <ThemedText textStyle="normal" variant="subtitle">
-          {formatTime(time)}
-        </ThemedText>
+        <ThemedText variant="subtitle">{formatTime(time)}</ThemedText>
       </Pressable>
       <DateTimePickerModal
         display="spinner"
