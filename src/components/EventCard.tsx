@@ -31,7 +31,7 @@ export function EventCard({ task, style }: Props) {
       <Row gap={8}>
         <View
           style={[
-            styles.contain,
+            styles.circle,
             {
               backgroundColor: task.category.color,
             },
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     opacity: 0.1,
   },
-  contain: {
+  circle: {
     height: 16,
     width: 16,
     borderRadius: 8,

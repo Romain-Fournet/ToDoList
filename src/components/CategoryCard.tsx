@@ -3,6 +3,7 @@ import { Image, StyleSheet, View, ViewProps } from "react-native";
 import { Row } from "@components/Row";
 import { ThemedText } from "@components/ThemedText";
 import { Icons } from "@const/Icons";
+import { Colors } from "@const/Colors";
 
 type Props = ViewProps & {
   category: Category;
@@ -30,8 +31,10 @@ export function CategoryCard({
           <ThemedText variant="body" style={{ fontWeight: "bold" }}>
             {numberTasksAssociated + " "}
           </ThemedText>
-          {/* TODO fade text */}
-          <ThemedText variant="body" style={{ fontWeight: "medium" }}>
+          <ThemedText
+            variant="body"
+            style={{ fontWeight: "medium", color: Colors.grey }}
+          >
             {category.name}
           </ThemedText>
         </Row>

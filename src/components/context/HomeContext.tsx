@@ -4,14 +4,14 @@ import { getTodayDate } from "src/functions/date";
 //Création du contexte
 type HomeContextType = {
   view: "Calendar" | "Today";
-  date: string;
-  setDate: (date: string) => void;
+  date: Date;
+  setDate: (date: Date) => void;
   setView: (name: "Calendar" | "Today") => void;
 };
 
 export const HomeContext = createContext<HomeContextType>({
   view: "Calendar",
-  date: "",
+  date: new Date(),
   setDate: () => {},
   setView: () => {},
 });
@@ -23,7 +23,7 @@ type Props = {
 //Installation du contexte
 export default function HomeContextProvider({ children }: Props) {
   const [view, setView] = useState<"Calendar" | "Today">("Today");
-  const [date, setDate] = useState(getTodayDate());
+  const [date, setDate] = useState(new Date());
 
   const valueHomeContext = {
     view,

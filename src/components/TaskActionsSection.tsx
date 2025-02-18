@@ -8,6 +8,7 @@ import { useDatePicker } from "@hooks/useDatePicker";
 import { CategorySelector } from "./CategorySelector";
 import { TimeSelector } from "./TimeSelector";
 import { Colors } from "@const/Colors";
+import { useHomeContext } from "./context/HomeContext";
 
 type Props = {
   task: Task;
@@ -34,6 +35,8 @@ export function TaskActionsSection({
     hideDatePicker,
     isDatePickerVisible,
   } = useDatePicker(setTaskDate);
+
+  const { date } = useHomeContext();
 
   return (
     <>
@@ -67,14 +70,13 @@ export function TaskActionsSection({
           </Row>
         </View>
       </KeyboardAvoidingView>
-
       <DateTimePickerModal
         display="inline"
         isVisible={isDatePickerVisible}
         mode="date"
         onConfirm={handleConfirmDate}
         onCancel={hideDatePicker}
-        date={task.date instanceof Date ? task.date : new Date()}
+        date={task.date instanceof Date ? task.date : date}
       />
     </>
   );

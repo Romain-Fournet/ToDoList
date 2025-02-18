@@ -1,8 +1,13 @@
 import { Pressable, StyleSheet } from "react-native";
 import { ThemedText } from "./ThemedText";
-import { getDateMonth, getDateWeekday } from "src/functions/date";
+import {
+  getDateMonthFormat,
+  getDateWeekday,
+  getFutureDate,
+} from "src/functions/date";
 import { useHomeContext } from "./context/HomeContext";
 import { Colors } from "@const/Colors";
+import { useEffect } from "react";
 
 type Props = {
   nbDaysFromToday: number;
@@ -20,7 +25,7 @@ export function DateCard({
   const backgroundColor = isSelected ? Colors.lightGrey : "none";
 
   const handleDateCardPressed = () => {
-    const updatedDate = getDateMonth(nbDaysFromToday);
+    const updatedDate = getFutureDate(nbDaysFromToday);
     setDate(updatedDate);
     setSelectedDay(nbDaysFromToday);
   };

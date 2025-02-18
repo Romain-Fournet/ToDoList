@@ -13,18 +13,26 @@ export const getTodayDate = () => {
   return todayFormat;
 };
 
-export const getDateMonth = (nbDaysFromToday: number) => {
+export const getFutureDate = (nbDaysFromToday: number) => {
   const day = new Date();
   day.setDate(day.getDate() + nbDaysFromToday);
 
-  const options: Intl.DateTimeFormatOptions = {
-    day: "numeric",
-    month: "short",
-  };
+  return day;
+};
 
-  const formatDay = day.toLocaleDateString("fr-FR", options).replace(".", "");
+export const getDateMonthFormat = (date: Date) => {
+  if (date instanceof Date) {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "numeric",
+      month: "short",
+    };
 
-  return formatDay;
+    const formatDay = date
+      .toLocaleDateString("fr-FR", options)
+      .replace(".", "");
+
+    return formatDay;
+  } else console.log(date);
 };
 
 export const getDateWeekday = (nbDaysFromToday: number) => {

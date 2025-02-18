@@ -3,9 +3,11 @@ import { Category, Task } from "../types";
 import { useCategoryContext } from "@components/context/CategoryContext";
 import { useTaskContext } from "@components/context/TaskContext";
 import { showAlert } from "src/functions/alert";
+import { useHomeContext } from "@components/context/HomeContext";
 
 export function useTask(initialTask?: Task) {
   const { categories } = useCategoryContext();
+  const { date } = useHomeContext();
   const { updateTotalTasks } = useTaskContext();
 
   //Logique tache principale
@@ -15,9 +17,9 @@ export function useTask(initialTask?: Task) {
     category: categories[0],
     isComplete: false,
     subTasks: [],
-    date: new Date(),
-    startTime: new Date(),
-    endTime: new Date(new Date().getTime() + 60 * 60 * 1000),
+    date: date,
+    startTime: date,
+    endTime: new Date(date.getTime() + 60 * 60 * 1000),
   };
 
   const [task, setTask] = useState(initialTask ? initialTask : emptyTask);
