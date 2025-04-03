@@ -1,65 +1,65 @@
-# Starter Template with React Navigation
+# ToDoList App
 
-This is a minimal starter template for React Native apps using Expo and React Navigation.
+Une application simple et efficace pour gérer vos tâches quotidiennes.
 
-It includes the following:
+<p align="center">
+   <img src="https://github.com/user-attachments/assets/c7dbb0f6-0545-4629-821f-c0c33466517a" width="250">
+</p>
 
-- Example [Native Stack](https://reactnavigation.org/docs/native-stack-navigator) with a nested [Bottom Tab](https://reactnavigation.org/docs/bottom-tab-navigator)
-- Web support with [React Native for Web](https://necolas.github.io/react-native-web/)
-- TypeScript support and configured for React Navigation
-- Automatic deep link and URL handling configuration
-- Expo [Development Build](https://docs.expo.dev/develop/development-builds/introduction/) with [Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)
-- Edge-to-edge configured on Android with [`react-native-edge-to-edge`](https://www.npmjs.com/package/react-native-edge-to-edge)
+## 🚀 Fonctionnalités
 
-## Getting Started
+✅ Ajouter, modifier, supprimer des taches
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/210bdc5d-4f06-448d-9502-90a4b2d9b2a3" width="250" hspace="10">
+    <img src="https://github.com/user-attachments/assets/6b404b8d-db36-41a7-8196-e2e1af3e3bd6" width="250" hspace="10">
+    <img src="https://github.com/user-attachments/assets/eb338670-86f0-454b-8e94-ba4009b6b412" width="250" hspace="10">
+</p>
 
-1. Create a new project using this template:
+✅ Choisir une date et une heure pour une tache
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/9af74aec-d3b4-4b1d-a268-8b4ca8bd7414" width="250" hspace="10">
+    <img src="https://github.com/user-attachments/assets/8bdb6504-3c85-45be-96f1-b4542b83ed8a" width="250" hspace="10">
+</p>
 
-   ```sh
-   npx create-expo-app@latest --template react-navigation/template
-   ```
+✅ Vue en mode calendrier
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/4b3e3e60-38dd-4cf0-9c21-268b7416da2d" width="250" hspace="10">
+</p>
 
-2. Edit the `app.json` file to configure the `name`, `slug`, `scheme` and bundle identifiers (`ios.bundleIdentifier` and `android.bundleIdentifier`) for your app.
+✅ Marquer une tache comme complétée
 
-3. Edit the `src/App.tsx` file to start working on your app.
+✅ Ajouter des sous taches
 
-## Running the app
+## ⚙️ Installation
+1.	Clonez le repo :
+```
+git clone https://github.com/Romain-Fournet/ToDoList.git
+cd ToDoList
+```
+2.	Installez les dépendances :
+```
+npm install  # ou yarn install
+```
+3. Lancez l'application
+```
+npm start  # ou yarn start
+```
 
-- Install the dependencies:
+## 🛠️ Technologies utilisées
+	•	React Native
+	•	TypeScript 
 
-  ```sh
-  npm install
-  ```
+## 📌 À venir  
 
-- Start the development server:
+-  Ajouter une page paramètres pour ajouter des catégories 
+-  Ajout d'une option de tri et de filtres pour les tâches
+-  Améliorer la gestion des dates   
 
-  ```sh
-  npm start
-  ```
 
-- Build and run iOS and Android development builds:
+## 🎨 Crédits
 
-  ```sh
-  npm run ios
-  # or
-  npm run android
-  ```
+Le design de cette application a été réalisé sur [Figma](https://www.figma.com/).  
+Merci à **[Siddhartha](https://www.figma.com/community/file/1056617538023886207)** pour l'inspiration du design.
 
-- In the terminal running the development server, press `i` to open the iOS simulator, `a` to open the Android device or emulator, or `w` to open the web browser.
 
-## Notes
 
-This project uses a [development build](https://docs.expo.dev/develop/development-builds/introduction/) and cannot be run with [Expo Go](https://expo.dev/go). To run the app with Expo Go, edit the `package.json` file, remove the `expo-dev-client` package and `--dev-client` flag from the `start` script. However, Edge-to-edge won't work on Expo Go.
-
-We highly recommend using the development builds for normal development and testing.
-
-The `ios` and `android` folder are gitignored in the project by default as they are automatically generated during the build process ([Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)). This means that you should not edit these folders directly and use [config plugins](https://docs.expo.dev/config-plugins/) instead. However, if you need to edit these folders, you can remove them from the `.gitignore` file so that they are tracked by git.
-
-## Resources
-
-- [React Navigation documentation](https://reactnavigation.org/)
-- [Expo documentation](https://docs.expo.dev/)
-
----
-
-Demo assets are from [lucide.dev](https://lucide.dev/)
